@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SongModule
+    SongModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

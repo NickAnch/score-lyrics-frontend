@@ -1,6 +1,7 @@
 <p>Song-list:</p>
 <ul>
-  <li *ngFor="let song of songs">
+  <li *ngFor="let song of songs$ | async;
+              let idx = index; trackBy:idx">
     <div>
       {{ song.singer }} - {{ song.name }}
     </div>

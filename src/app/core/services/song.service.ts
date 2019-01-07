@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ISong } from 'src/lib/models/song.interface';
+import { ISong } from '@lib/models';
+import { environment } from '@env';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongService {
-  private songsUrl = 'http://localhost:3000/songs';
+  private songsUrl = `${environment.apiUrl}/songs`;
 
   constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
   ) { }
 
   public getSongs(): Observable<ISong[]> {

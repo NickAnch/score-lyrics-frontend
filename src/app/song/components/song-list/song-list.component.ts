@@ -1,26 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { SongService } from '../../../core/services/song.service';
-import { ISong } from '../../../../lib/models/song.interface';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { ISong } from '@lib/models';
+import { SongService } from '@app/core/services';
 
 @Component({
   selector: 'app-song-list',
   templateUrl: './song-list.component.html',
   styleUrls: ['./song-list.component.scss']
 })
-export class SongListComponent implements OnInit {
-  public songs: ISong[];
+export class SongListComponent {
+  public songs$: Observable<ISong[]> = this.songService.getSongs();
 
   constructor(
-    private songService: SongService
+    private songService: SongService,
   ) { }
-
-  public ngOnInit() {
-    this.getSongs();
-  }
-
-  public getSongs(): void {
-    this.songService.getSongs()
-      .subscribe(songs => this.songs = songs);
-  }
 
 }

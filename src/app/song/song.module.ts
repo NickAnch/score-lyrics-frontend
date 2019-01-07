@@ -6,13 +6,13 @@ import { SongComponent } from './components/song/song.component';
 @NgModule({
   declarations: [
     SongListComponent,
-    SongComponent
+    SongComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
-    SongListComponent
+    SongListComponent,
   ]
 })
 export class SongModule { }
