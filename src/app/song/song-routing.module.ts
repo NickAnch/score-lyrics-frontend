@@ -4,15 +4,22 @@ import {
   SongComponent,
   SongListComponent,
 } from '@app/song/components';
+import { SongsViewComponent } from './views';
 
 const routes: Routes = [
   {
     path: '',
-    component: SongListComponent
-  },
-  {
-    path: 'songs/:id',
-    component: SongComponent
+    component: SongsViewComponent,
+    children: [
+      {
+        path: '',
+        component: SongListComponent,
+      },
+      {
+        path: ':id',
+        component: SongComponent,
+      }
+    ],
   },
 ];
 
