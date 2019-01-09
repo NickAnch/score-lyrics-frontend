@@ -10,10 +10,10 @@ import { SongService } from '@app/core/services';
   styleUrls: ['./song-list.component.scss']
 })
 export class SongListComponent {
-  public songs$: Observable<ISong[]> = this.songService.getSongs();
+  public songs$: Observable<ISong[]> = this._songService.getSongs();
 
   constructor(
-    private songService: SongService,
+    private _songService: SongService,
   ) { }
 
 }
