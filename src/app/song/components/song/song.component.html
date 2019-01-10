@@ -1,0 +1,20 @@
+<div>
+  {{ song?.singer }} - {{ song?.name }}
+</div>
+<div>
+  <b>views:</b> {{ song?.views }}
+</div>
+<div>
+  <b>likes:</b> {{ song?.rating.likes }} <br>
+  <b>dislikes:</b> {{ song?.rating.dislikes }}
+</div>
+<div>
+  <b>lyrics: </b> <br> {{ song?.lyrics }}
+</div>
+<div *ngIf="song?.translate">
+  <b>translate:</b> <br> {{ song?.translate }}
+</div>
+<div>
+  <b>Author of the lyrics:</b> {{ song?.author.username }},
+                               {{ song?.author.birthday }}
+</div>

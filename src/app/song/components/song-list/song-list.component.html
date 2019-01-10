@@ -1,0 +1,18 @@
+<p>Song-list:</p>
+<ul>
+  <li *ngFor="let song of songs$ | async;
+              let idx = index; trackBy:idx">
+    <a routerLink="/songs/{{ song.id }}">
+      <div>
+        {{ song.singer }} - {{ song.name }}
+      </div>
+      <div>
+        views: {{ song.views }}
+      </div>
+      <div>
+        likes: {{ song.rating.likes }} <br>
+        dislikes: {{ song.rating.dislikes }}
+      </div>
+    </a>
+  </li>
+</ul>
