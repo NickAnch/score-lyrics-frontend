@@ -6,6 +6,7 @@ import {
 } from './components';
 import { SongRoutingModule } from '@app/song/song-routing.module';
 import { SongsViewComponent } from './views';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SongsViewComponent } from './views';
   imports: [
     CommonModule,
     SongRoutingModule,
+    SharedModule,
   ]
 })
 export class SongModule { }

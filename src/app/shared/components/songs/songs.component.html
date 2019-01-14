@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let song of songs;
+              let idx = index; trackBy:idx">
+    <a routerLink="/songs/{{ song.id }}">
+      {{ song.singer }} - {{ song.name }}
+    </a>
+    likes: {{ song.rating.likes }},
+    dislikes: {{ song.rating.dislikes }},
+    views: {{ song.views }}
+  </li>
+</ul>
