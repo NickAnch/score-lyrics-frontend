@@ -1,0 +1,11 @@
+<form [formGroup]="form">
+  <input formControlName="userName"
+         placeholder="Username">
+  <input formControlName="email"
+         placeholder="Email">
+  <input formControlName="password"
+         placeholder="password"
+         type="password">
+  <button (click)="register()"
+          [disabled]="form.invalid">Submit</button>
+</form>
