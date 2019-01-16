@@ -25,8 +25,7 @@ export class SongComponent implements OnInit, OnDestroy {
     this.getSong();
   }
 
-  public ngOnDestroy() {
-  }
+  public ngOnDestroy() { }
 
   public getSong(): void {
     const id = +this._route.snapshot.paramMap.get('id');
@@ -34,5 +33,4 @@ export class SongComponent implements OnInit, OnDestroy {
       .pipe(untilDestroyed(this))
       .subscribe(song => this.song = song);
   }
-
 }
