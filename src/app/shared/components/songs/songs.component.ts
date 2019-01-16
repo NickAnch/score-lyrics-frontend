@@ -11,4 +11,7 @@ export class SongsComponent {
 
   constructor() { }
 
+  trackByFn(index, song) {
+    return song.id;
+  }
 }

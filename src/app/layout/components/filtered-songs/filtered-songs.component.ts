@@ -30,5 +30,4 @@ export class FilteredSongsComponent implements OnInit, OnDestroy {
       .pipe(untilDestroyed(this))
       .subscribe(songs => this.songs = songs);
   }
-
 }

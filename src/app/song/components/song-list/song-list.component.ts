@@ -16,7 +16,7 @@ export class SongListComponent implements OnDestroy, OnInit {
     private _songService: SongService,
   ) { }
 
-  public ngOnDestroy() {}
+  public ngOnDestroy() { }
 
   public ngOnInit() {
     this.getSongs();
