@@ -1,0 +1,8 @@
+<nav class="main">
+  <a routerLink="">Home</a>
+  <a routerLink="/songs">All songs</a>
+  <a routerLink="/users/sign-in" *ngIf="!isLogged">Sign In</a>
+  <a routerLink="/users/sign-up" *ngIf="!isLogged">Sign Up</a>
+  <a (click)="signOut()" *ngIf="isLogged">Exit</a>
+</nav>
+<h3>Score lyrics</h3>

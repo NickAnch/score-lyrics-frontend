@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { LayoutModule } from '@app/layout/layout.module';
 import { SharedModule } from '@app/shared/shared.module';
 import { CoreModule } from '@app/core/core.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CoreModule } from '@app/core/core.module';
     CoreModule,
     LayoutModule,
     SharedModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
