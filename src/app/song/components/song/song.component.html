@@ -2,6 +2,9 @@
   {{ song?.singer }} - {{ song?.name }}
 </div>
 <div>
+  <b>Genre:</b> {{ song?.genre_name }}
+</div>
+<div>
   <b>views:</b> {{ song?.views }}
 </div>
 <div>
@@ -15,9 +18,9 @@
   <b>translate:</b> <br> {{ song?.translate }}
 </div>
 <div>
-  <b>Author of the lyrics:</b> {{ song?.author.username }},
+  <b>Author of the lyrics:</b> {{ song?.author.username }}
                                {{ song?.author.birthday }}
 </div>
 <iframe *ngIf="song?.linkUrl"
-        src="song?.linkUrl">
+        [src]="song?.linkUrl | safe">
 </iframe>
