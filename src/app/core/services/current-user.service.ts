@@ -37,7 +37,6 @@ export class CurrentUserService {
           .subscribe(
             (res) => {
               this._currentUser = res;
-              console.log(this._currentUser);
               observer.next(true);
               observer.complete();
             },
@@ -64,9 +63,12 @@ export class CurrentUserService {
         .subscribe(
           (res) => {
             CurrentUserService.setTokenByHeaders(res.headers);
-            this.getCurrentUser().subscribe();
-            observer.next(true);
-            observer.complete();
+            this.getCurrentUser().subscribe(
+              () => {
+                observer.next(true);
+                observer.complete();
+              }
+            );
           },
           error => observer.error(error)
         );

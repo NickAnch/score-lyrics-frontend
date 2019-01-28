@@ -14,13 +14,14 @@ import { CurrentUserService } from '@app/core/services';
 export class CurrentUserGuard implements CanActivate {
   constructor(
     private _currentUserService: CurrentUserService,
-    private router: Router,
+    private _router: Router,
   ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return true;
+    return this._currentUserService.isLoggedIn
+      || this._router.navigate(['/users/sign-in']);
   }
 }
