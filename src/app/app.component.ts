@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CurrentUserService } from '@app/core/services';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -19,5 +19,5 @@ export class AppComponent implements OnInit {
     this.spinner.show();
     this._currentUser.getCurrentUser()
       .subscribe(() => this.spinner.hide());
-    }
+  }
 }

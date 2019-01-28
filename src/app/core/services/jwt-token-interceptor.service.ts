@@ -33,6 +33,7 @@ export class JwtTokenInterceptorService implements HttpInterceptor {
         if (error.error instanceof ErrorEvent) {
           errorMessage = `Error: ${error.error.message}`;
         } else {
+          localStorage.removeItem('token');
           errorMessage =
           `Error Code: ${error.status}\nMessage: ${error.message}`;
         }

@@ -1,14 +1,16 @@
-import { IEntity } from './entity.interface';
-import { IGenre } from './genre.interface';
-
-export type IRating = './rating.interface';
-export type IUser = './user.interface';
+import {
+    IEntity,
+    IRating,
+    IVote,
+    IUser,
+} from '@lib/models';
 
 export interface ISong extends IEntity {
     singer: string;
     name: string;
     views: number;
     rating: IRating;
+    vote: IVote;
     genre_id: number;
     genre_name?: string ;
     lyrics?: string;

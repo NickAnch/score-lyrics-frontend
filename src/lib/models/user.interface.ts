@@ -1,6 +1,7 @@
-import { IEntity } from './entity.interface';
-
-export type ISong = './song.interface';
+import {
+  IEntity,
+  ISong,
+} from '@lib/models';
 
 export interface IUser extends IEntity {
   email: string;
