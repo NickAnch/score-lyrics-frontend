@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+  <h5>SING UP</h5>
+  <input formControlName="userName"
+         placeholder="Username">
+  <input formControlName="email"
+         placeholder="Email">
+  <input formControlName="password"
+         placeholder="password"
+         type="password">
+  <button (click)="signUp()"
+          [disabled]="form.invalid">Submit</button>
+</form>

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes,
-         RouterModule,
+import {
+  Routes,
+  RouterModule,
 } from '@angular/router';
 import { HomeViewComponent } from '@app/layout/views/home/home.view';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
         path: 'songs',
         loadChildren: './song/song.module#SongModule',
       },
+      {
+        path: 'users',
+        loadChildren: './user/user.module#UserModule',
+      }
     ]
   },
 ];

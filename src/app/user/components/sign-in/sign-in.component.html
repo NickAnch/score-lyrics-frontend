@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+  <h5>SING IN</h5>
+  <input formControlName="email"
+         placeholder="Email">
+  <input formControlName="password"
+         placeholder="password"
+         type="password">
+  <button (click)="signIn()"
+          [disabled]="form.invalid">Submit</button>
+</form>
