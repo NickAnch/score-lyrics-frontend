@@ -29,6 +29,10 @@ export class CurrentUserService {
      return !!this._currentUser;
   }
 
+  get currentUser(): IUser {
+    return this._currentUser;
+  }
+
   public getCurrentUser(): Observable<IUser> {
     return Observable.create((observer: Observer<IUser>) => {
       if (localStorage.getItem('token')) {

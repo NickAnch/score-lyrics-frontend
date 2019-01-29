@@ -9,7 +9,11 @@ import { SongRoutingModule } from '@app/song/song-routing.module';
 import { SongsViewComponent } from './views';
 import { SharedModule } from '@app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ManageSongService } from '@app/song/services';
+import {
+  ManageSongService,
+  RatingService,
+  GenreService,
+} from '@app/song/services';
 import { SafePipe } from '@app/song/services/safe.pipe';
 
 @NgModule({
@@ -29,6 +33,8 @@ import { SafePipe } from '@app/song/services/safe.pipe';
   ],
   providers: [
     ManageSongService,
+    RatingService,
+    GenreService,
   ],
 })
 export class SongModule { }

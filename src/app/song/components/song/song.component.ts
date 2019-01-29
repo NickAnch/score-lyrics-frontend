@@ -11,7 +11,7 @@ import {
 import { untilDestroyed } from 'ngx-take-until-destroy';
 
 import { ActivatedRoute } from '@angular/router';
-import { ManageSongService } from '@app/song/services';
+import { ManageSongService, RatingService } from '@app/song/services';
 
 @Component({
   selector: 'app-song',
@@ -28,17 +28,13 @@ export class SongComponent implements OnInit, OnDestroy {
     private _songService: SongService,
     private _currentUser: CurrentUserService,
     private _manageSong: ManageSongService,
+    private _ratingService: RatingService,
     private _route: ActivatedRoute,
   ) { }
 
   public ngOnInit() {
-    this._currentUser.getCurrentUser()
-      .subscribe(
-        (curUser) => {
-          this.user = curUser;
-          this.getSong();
-        }
-      );
+    this.user = this._currentUser.currentUser;
+    this.getSong();
   }
 
   public ngOnDestroy() { }
@@ -61,30 +57,29 @@ export class SongComponent implements OnInit, OnDestroy {
   }
 
   public rateSong(mark): void {
-    this._manageSong.rateSong(this.songId, mark)
+    this._ratingService.rateSong(this.songId, mark)
       .subscribe();
   }
 
   public putMark(key: string): void {
-    if (this.user) {
-      const condition = key === 'likes';
-      if (this.vote && this.vote.mark === condition) {
-        this.rateSong(null);
-        this.song.rating[key]--;
-        if (this.vote.mark !== condition) {
-          this.song.rating.dislikes++;
-        }
-        this.vote.mark = null;
-      } else {
-        this.rateSong(condition);
-        if (this.vote && this.vote.mark === !condition) {
-          key === 'likes' ? this.song.rating.dislikes--
-            : this.song.rating.likes--;
-          this.vote.mark = condition;
-        }
-        this.song.rating[key]++;
+    if (!this.user) { return; }
+    const condition = key === 'likes';
+    if (this.vote && this.vote.mark === condition) {
+      this.rateSong(null);
+      this.song.rating[key]--;
+      if (this.vote.mark !== condition) {
+        this.song.rating.dislikes++;
+      }
+      this.vote.mark = null;
+    } else {
+      this.rateSong(condition);
+      if (this.vote && this.vote.mark === !condition) {
+        key === 'likes' ? this.song.rating.dislikes--
+          : this.song.rating.likes--;
         this.vote.mark = condition;
       }
+      this.song.rating[key]++;
+      this.vote.mark = condition;
     }
   }
 
