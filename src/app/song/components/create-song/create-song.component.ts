@@ -4,6 +4,7 @@ import { ManageSongService } from '@app/song/services';
 import { IGenre } from '@lib/models';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-create-song',
@@ -17,19 +18,26 @@ export class CreateSongComponent implements OnInit, OnDestroy {
   constructor(
     private _manageSong: ManageSongService,
     private _router: Router,
+    private _spinner: NgxSpinnerService,
   ) { }
 
   public ngOnInit() {
+    this._spinner.show();
     this._manageSong.getGenres()
       .pipe(untilDestroyed(this))
-      .subscribe(genres => this.genres = genres);
+      .subscribe(genres => {
+        this.genres = genres;
+        this._spinner.hide();
+      });
 
     this.form = new FormGroup({
       singer: new FormControl('', [
         Validators.required,
+        Validators.minLength(2),
       ]),
       name: new FormControl('', [
         Validators.required,
+        Validators.minLength(2),
       ]),
       linkUrl: new FormControl(''),
       genre_id: new FormControl('', [

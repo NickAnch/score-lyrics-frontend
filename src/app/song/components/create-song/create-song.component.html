@@ -1,4 +1,5 @@
-<form [formGroup]="form">
+<form [formGroup]="form"
+      (submit)="addSong()">
   <h5>Add your song</h5>
   <input formControlName="singer"
          placeholder="Singer"> <br>
@@ -15,5 +16,5 @@
   </select> <br>
   <textarea formControlName="lyrics"></textarea><br>
   <textarea formControlName="translate"></textarea><br>
-  <button (click)="addSong()">Submit</button>
+  <button [disabled]="form.invalid">Submit</button>
 </form>

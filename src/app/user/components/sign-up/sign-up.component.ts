@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit {
     private _route: Router,
   ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.form = new FormGroup({
       userName: new FormControl('', [
         Validators.required

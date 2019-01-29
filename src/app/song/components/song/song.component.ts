@@ -49,8 +49,7 @@ export class SongComponent implements OnInit, OnDestroy {
       .subscribe(
         (song) => {
           this.song = song;
-          this.vote = ((song.vote && this.user.id === song.vote.user_id)
-            && song.vote);
+          this.vote = song.vote;
           if (this.vote === null && this.user) {
             this.vote = {
               mark: null,

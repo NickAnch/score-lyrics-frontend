@@ -28,11 +28,9 @@ export class JwtTokenInterceptorService implements HttpInterceptor {
     }
 
     return next.handle(req).pipe(
-      catchError((error: HttpErrorResponse) => {
+      catchError((error: any) => {
         let errorMessage = '';
-        if (error.error instanceof ErrorEvent) {
-          errorMessage = `Error: ${error.error.message}`;
-        } else {
+        if (error instanceof HttpErrorResponse && error.status === 401) {
           localStorage.removeItem('token');
           errorMessage =
           `Error Code: ${error.status}\nMessage: ${error.message}`;
