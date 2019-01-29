@@ -16,7 +16,7 @@ export class SignInComponent implements OnInit {
     private _route: Router,
   ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.form = new FormGroup({
       email: new FormControl('', [
         Validators.required,

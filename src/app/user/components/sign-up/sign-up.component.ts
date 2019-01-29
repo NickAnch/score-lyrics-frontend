@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUserService } from '@app/core/services';

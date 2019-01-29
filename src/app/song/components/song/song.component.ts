@@ -1,6 +1,7 @@
-import { Component,
-         OnInit,
-         OnDestroy,
+import {
+  Component,
+  OnInit,
+  OnDestroy,
 } from '@angular/core';
 import { SongService, CurrentUserService } from '@app/core/services';
 import {
@@ -9,9 +10,8 @@ import {
   IUser,
 } from '@lib/models';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-
 import { ActivatedRoute } from '@angular/router';
-import { ManageSongService, RatingService } from '@app/song/services';
+import { RatingService } from '@app/song/services';
 
 @Component({
   selector: 'app-song',
@@ -27,7 +27,6 @@ export class SongComponent implements OnInit, OnDestroy {
   constructor(
     private _songService: SongService,
     private _currentUser: CurrentUserService,
-    private _manageSong: ManageSongService,
     private _ratingService: RatingService,
     private _route: ActivatedRoute,
   ) { }

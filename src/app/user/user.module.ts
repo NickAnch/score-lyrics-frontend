@@ -8,7 +8,7 @@ import { UserRoutingModule } from '@app/user/user-routing.module';
 import { UserViewComponent } from '@app/user/views';
 import {
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
 } from '@angular/forms';
 
 @NgModule({

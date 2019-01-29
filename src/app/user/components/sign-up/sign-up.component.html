@@ -1,4 +1,5 @@
-<form [formGroup]="form">
+<form [formGroup]="form"
+      (submit)="signUp()">
   <h5>SING UP</h5>
   <input formControlName="userName"
          placeholder="Username">
@@ -7,6 +8,5 @@
   <input formControlName="password"
          placeholder="password"
          type="password">
-  <button (click)="signUp()"
-          [disabled]="form.invalid">Submit</button>
+  <button [disabled]="form.invalid">Submit</button>
 </form>
