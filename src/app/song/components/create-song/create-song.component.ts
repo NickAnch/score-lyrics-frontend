@@ -40,7 +40,10 @@ export class CreateSongComponent implements OnInit, OnDestroy {
         Validators.required,
         Validators.minLength(2),
       ]),
-      linkUrl: new FormControl(''),
+      linkUrl: new FormControl('', [
+        Validators
+          .pattern('^(https|http):\/\/www\.youtube\.com\/embed\/[A-z0-9]+'),
+      ]),
       genre_id: new FormControl('', [
         Validators.required,
       ]),
