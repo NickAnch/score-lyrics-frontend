@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CurrentUserService } from '@app/core/services';
 import { Router } from '@angular/router';
-import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'app-sign-in',
@@ -17,7 +16,7 @@ export class SignInComponent implements OnInit {
     private _route: Router,
   ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.form = new FormGroup({
       email: new FormControl('', [
         Validators.required,

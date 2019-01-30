@@ -29,21 +29,25 @@ export class CurrentUserService {
      return !!this._currentUser;
   }
 
+  get currentUser(): IUser {
+    return this._currentUser;
+  }
+
   public getCurrentUser(): Observable<IUser> {
-    return Observable.create((observer: Observer<boolean>) => {
+    return Observable.create((observer: Observer<IUser>) => {
       if (localStorage.getItem('token')) {
         this._http
           .get<IUser>(this._profileUrl)
           .subscribe(
             (res) => {
               this._currentUser = res;
-              observer.next(true);
+              observer.next(res);
               observer.complete();
             },
             error => observer.error(error)
           );
       } else {
-        observer.next(false);
+        observer.next(null);
         observer.complete();
       }
     });

@@ -1,6 +1,4 @@
-import { IEntity } from './entity.interface';
-
-export interface IRating extends IEntity {
+export interface IRating {
   likes: number;
   dislikes: number;
 }

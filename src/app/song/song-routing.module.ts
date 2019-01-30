@@ -3,8 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import {
   SongComponent,
   SongListComponent,
+  CreateSongComponent,
 } from '@app/song/components';
 import { SongsViewComponent } from './views';
+import { CurrentUserGuard } from '@app/core/services/current-user.guard';
 
 const routes: Routes = [
   {
@@ -16,9 +18,14 @@ const routes: Routes = [
         component: SongListComponent,
       },
       {
+        path: 'create',
+        component: CreateSongComponent,
+        canActivate: [CurrentUserGuard]
+      },
+      {
         path: ':id',
         component: SongComponent,
-      }
+      },
     ],
   },
 ];

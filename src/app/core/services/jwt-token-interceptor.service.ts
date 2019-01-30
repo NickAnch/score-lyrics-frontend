@@ -30,6 +30,7 @@ export class JwtTokenInterceptorService implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
         let errorMessage = '';
+        this._handleAuthError(error);
         if (error.error instanceof ErrorEvent) {
           errorMessage = `Error: ${error.error.message}`;
         } else {
@@ -39,5 +40,11 @@ export class JwtTokenInterceptorService implements HttpInterceptor {
         return throwError(errorMessage);
       })
     );
+  }
+
+  private _handleAuthError(error: HttpErrorResponse): void {
+    if (error.status === 401) {
+      localStorage.removeItem('token');
+    }
   }
 }

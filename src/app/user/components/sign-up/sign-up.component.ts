@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
   FormControl,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUserService } from '@app/core/services';
@@ -20,7 +20,7 @@ export class SignUpComponent implements OnInit {
     private _route: Router,
   ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.form = new FormGroup({
       userName: new FormControl('', [
         Validators.required
