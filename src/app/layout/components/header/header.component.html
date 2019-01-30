@@ -4,6 +4,7 @@
   <a routerLink="/users/sign-in" *ngIf="!isLogged">Sign In</a>
   <a routerLink="/users/sign-up" *ngIf="!isLogged">Sign Up</a>
   <a routerLink="/songs/create" *ngIf="isLogged">Add song</a>
+  <a routerLink="/profile" *ngIf="isLogged">{{ currentUser?.username }}</a>
   <a (click)="signOut()" *ngIf="isLogged">Exit</a>
 </nav>
 <h3>Score lyrics</h3>

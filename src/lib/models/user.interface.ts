@@ -6,8 +6,8 @@ import {
 export interface IUser extends IEntity {
   email: string;
   username: string;
-  birthday: Date;
-  gender: number;
+  birthday?: Date;
+  gender?: string;
   songs?: ISong[];
   // avatar: string;
 }
