@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IGenre, ISong } from '@lib/models';
 
@@ -6,6 +13,7 @@ import { IGenre, ISong } from '@lib/models';
   selector: 'app-song-form',
   templateUrl: './song-form.component.html',
   styleUrls: ['./song-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SongFormComponent implements OnInit {
   public form: FormGroup;
