@@ -23,10 +23,10 @@ export class HeaderComponent {
     return this._currentUserService.isLoggedIn;
   }
 
-public signOut(): void {
-  this._currentUserService.signOut()
-  .subscribe(() => {
-        this._router.navigate(['users/sign-in']);
-      });
+  public signOut(): void {
+    this._currentUserService.signOut()
+    .subscribe(() => {
+          this._router.navigate(['users/sign-in']);
+        });
   }
 }

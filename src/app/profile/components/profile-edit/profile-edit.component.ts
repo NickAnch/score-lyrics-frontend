@@ -3,6 +3,7 @@ import {
   OnInit,
   Input,
   ChangeDetectionStrategy,
+  OnDestroy,
 } from '@angular/core';
 import { IUser } from '@lib/models';
 import { CurrentUserService } from '@app/core/services';
@@ -11,13 +12,14 @@ import {
   FormControl,
   Validators
 } from '@angular/forms';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileEditComponent implements OnInit {
+export class ProfileEditComponent implements OnInit, OnDestroy {
   @Input() profile: IUser;
   public form: FormGroup;
 
@@ -33,15 +35,14 @@ export class ProfileEditComponent implements OnInit {
       birthday: new FormControl(this.profile.birthday),
       gender: new FormControl(this.profile.gender),
     });
-    console.log(this.form.value);
   }
 
+  public ngOnDestroy() { }
+
   public editProfile() {
-    this._currentUserService.editProfile(this.form.value).subscribe(
-      (user) => {
-        console.log(user);
-      }
-    );
+    this._currentUserService.editProfile(this.form.value)
+      .pipe(untilDestroyed(this))
+      .subscribe();
   }
 
 }
