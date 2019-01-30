@@ -30,3 +30,6 @@
 <iframe *ngIf="song?.linkUrl"
         [src]="song?.linkUrl | safe">
 </iframe>
+<button [hidden]="!isUserSong" (click)="navigateToEditSong()">
+  Edit song
+</button>

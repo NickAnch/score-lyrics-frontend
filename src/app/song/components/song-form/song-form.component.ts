@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { IGenre } from '@lib/models';
+import { IGenre, ISong } from '@lib/models';
 
 @Component({
   selector: 'app-song-form',
@@ -8,40 +8,52 @@ import { IGenre } from '@lib/models';
   styleUrls: ['./song-form.component.scss'],
 })
 export class SongFormComponent implements OnInit {
-
   public form: FormGroup;
 
   @Input('genres') genres: IGenre;
+  @Input('song') song: ISong = {
+    singer: '',
+    name: '',
+    linkUrl: '',
+    genre_name: '',
+    lyrics: '',
+    translate: '',
+    id: null,
+    views: null,
+    rating: null,
+    vote: null,
+    genre_id: null,
+  };
   @Output() sendSong = new EventEmitter<FormGroup>();
 
   constructor() { }
 
   ngOnInit() {
-    console.log('Was init')
+
     this.form = new FormGroup({
-      singer: new FormControl('', [
+      singer: new FormControl(this.song.singer, [
         Validators.required,
         Validators.minLength(2),
       ]),
-      name: new FormControl('', [
+      name: new FormControl(this.song.name, [
         Validators.required,
         Validators.minLength(2),
       ]),
-      linkUrl: new FormControl('', [
+      linkUrl: new FormControl(this.song.linkUrl, [
         Validators
           .pattern('^(https|http):\/\/www\.youtube\.com\/embed\/[A-z0-9]+'),
       ]),
-      genre_id: new FormControl('', [
+      genre_id: new FormControl(this.song.genre_id, [
         Validators.required,
       ]),
-      lyrics: new FormControl('', [
+      lyrics: new FormControl(this.song.lyrics, [
         Validators.required,
       ]),
-      translate: new FormControl(''),
+      translate: new FormControl(this.song.translate),
     });
   }
 
-  public addSong(): void {
+  public emitForm(): void {
     this.sendSong.emit(this.form);
   }
 

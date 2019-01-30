@@ -4,6 +4,8 @@ import {
   SongComponent,
   SongListComponent,
   CreateSongComponent,
+  SongFormComponent,
+  EditSongComponent,
 } from './components';
 import { SongRoutingModule } from '@app/song/song-routing.module';
 import { SongsViewComponent } from './views';
@@ -15,7 +17,6 @@ import {
   GenreService,
 } from '@app/song/services';
 import { SafePipe } from '@app/song/services/safe.pipe';
-import { SongFormComponent } from './components/song-form/song-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SongFormComponent } from './components/song-form/song-form.component';
     CreateSongComponent,
     SafePipe,
     SongFormComponent,
+    EditSongComponent,
   ],
   imports: [
     CommonModule,

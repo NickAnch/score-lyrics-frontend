@@ -1,0 +1,8 @@
+<h5>
+  Edit a song
+</h5>
+<app-song-form *ngIf="song"
+               [genres]="genres"
+               [song]="song"
+               (sendSong)="updateSong($event)">
+</app-song-form>
