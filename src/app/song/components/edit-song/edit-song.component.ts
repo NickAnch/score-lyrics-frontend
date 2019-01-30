@@ -11,7 +11,6 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./edit-song.component.scss']
 })
 export class EditSongComponent implements OnInit {
-
   public song: ISong;
   public genres: IGenre[];
   private _songId = +this._activatedRoute.snapshot.paramMap.get('id');

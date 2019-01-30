@@ -11,6 +11,13 @@ export class SongFormComponent implements OnInit {
   public form: FormGroup;
 
   @Input('genres') genres: IGenre;
+  // TODO: apply restructurint with default values. Cos this default object makes me mad.
+  // I've tryed to do it, but I couldn't
+  // I hope on code review together we will invent new way
+  // or will understand how to use destructuring in this case.
+  //
+  // As a second idea - we can make a class from ISong interface, or just a
+  // separate Song class and use new Song class instance as a default empty value.
   @Input('song') song: ISong = {
     singer: '',
     name: '',
@@ -29,7 +36,6 @@ export class SongFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
     this.form = new FormGroup({
       singer: new FormControl(this.song.singer, [
         Validators.required,
