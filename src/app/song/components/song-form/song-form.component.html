@@ -1,0 +1,22 @@
+<form [formGroup]="form">
+  <h5>Add your song</h5>
+  <input formControlName="singer"
+         placeholder="Singer"> <br>
+  <input formControlName="name"
+         placeholder="Name"><br>
+  <input formControlName="linkUrl"
+         placeholder="Link"><br>
+  <select formControlName="genre_id">
+    <option disabled>Choose genre</option>
+    <option *ngFor="let genre of genres"
+            [ngValue]="genre.id">
+      {{ genre.name }}
+    </option>
+  </select> <br>
+  <textarea formControlName="lyrics"></textarea><br>
+  <textarea formControlName="translate"></textarea><br>
+  <button (click)="addSong()" [disabled]="form.invalid">Submit</button>
+</form>
+<pre>
+  {{form.invalid}}
+</pre>

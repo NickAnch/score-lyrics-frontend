@@ -1,20 +1,2 @@
-<form [formGroup]="form"
-      (submit)="addSong()">
-  <h5>Add your song</h5>
-  <input formControlName="singer"
-         placeholder="Singer"> <br>
-  <input formControlName="name"
-         placeholder="Name"><br>
-  <input formControlName="linkUrl"
-         placeholder="Link"><br>
-  <select formControlName="genre_id">
-    <option disabled>Choose genre</option>
-    <option *ngFor="let genre of genres"
-            [ngValue]="genre.id">
-      {{ genre.name }}
-    </option>
-  </select> <br>
-  <textarea formControlName="lyrics"></textarea><br>
-  <textarea formControlName="translate"></textarea><br>
-  <button [disabled]="form.invalid">Submit</button>
-</form>
+<app-song-form [genres]="genres" (sendSong)="sendSong($event)">
+</app-song-form>

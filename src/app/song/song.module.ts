@@ -15,6 +15,7 @@ import {
   GenreService,
 } from '@app/song/services';
 import { SafePipe } from '@app/song/services/safe.pipe';
+import { SongFormComponent } from './components/song-form/song-form.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SafePipe } from '@app/song/services/safe.pipe';
     SongsViewComponent,
     CreateSongComponent,
     SafePipe,
+    SongFormComponent,
   ],
   imports: [
     CommonModule,
