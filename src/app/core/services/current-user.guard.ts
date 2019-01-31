@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   Router,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Observer } from 'rxjs';
 import { CurrentUserService } from '@app/core/services';
 
 @Injectable({
@@ -21,7 +21,18 @@ export class CurrentUserGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this._currentUserService.isLoggedIn
-      || this._router.navigate(['/users/sign-in']);
+    return Observable.create((observer: Observer<boolean>) => {
+      this._currentUserService.getCurrentUser()
+        .subscribe(
+          (response) => {
+            if (response === null) {
+              this._router.navigate(['users/sign-in']);
+            } else {
+              observer.next(true);
+              observer.complete();
+            }
+          }
+        );
+    })
   }
 }
