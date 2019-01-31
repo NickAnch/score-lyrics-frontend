@@ -6,13 +6,15 @@ import { IUser } from '@lib/models';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
+  public profile: IUser;
 
   constructor(
     private _currentUserService: CurrentUserService,
   ) { }
 
-  get profile(): IUser {
-    return this._currentUserService.currentUser;
+  public ngOnInit() {
+    this._currentUserService.getCurrentUser()
+      .subscribe(user => this.profile = user);
   }
 }

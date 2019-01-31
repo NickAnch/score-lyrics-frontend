@@ -1,9 +1,10 @@
 <h4>Your Profile</h4>
 <div>
-  <b>Email:</b> {{ profile.email }}
+  <b>Email:</b> {{ profile?.email }}
 </div>
-<app-profile-edit [profile]="profile"></app-profile-edit>
-<div *ngIf="profile.songs">
+<app-profile-edit *ngIf="profile"
+                  [profile]="profile"></app-profile-edit>
+<div *ngIf="profile?.songs">
   <b> Your added songs:</b>
   <app-songs [songs]="profile.songs"></app-songs>
 </div>
