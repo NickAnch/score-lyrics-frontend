@@ -1,9 +1,7 @@
-<form [formGroup]="form"
-      (submit)="editProfile()">
+<form [formGroup]="form">
   <div>
     <b>Nickname* : </b>
-    <input
-           formControlName="username"
+    <input formControlName="username"
            placeholder="Username">
   </div>
   <div>
@@ -22,5 +20,6 @@
            formControlName="gender"
            value="female">Female
   </div>
-  <button [disabled]="form.invalid">Save</button>
+  <button (click)="editProfile()"
+          [disabled]="form.invalid">Save</button>
 </form>
