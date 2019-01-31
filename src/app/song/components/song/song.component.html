@@ -27,9 +27,11 @@
   <b>Author of the lyrics:</b> {{ song?.author.username }}
                                {{ song?.author.birthday }}
 </div>
-<iframe *ngIf="song?.linkUrl"
+<div>
+  <iframe *ngIf="song?.linkUrl"
         [src]="song?.linkUrl | safe">
 </iframe>
+</div>
 <button [hidden]="!isUserSong" (click)="navigateToEditSong()">
   Edit song
 </button>
