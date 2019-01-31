@@ -1,0 +1,25 @@
+<form [formGroup]="form">
+  <div>
+    <b>Nickname* : </b>
+    <input formControlName="username"
+           placeholder="Username">
+  </div>
+  <div>
+    <b>Birthday: </b>
+    <input type="date"
+           [value]="profile.birthday"
+           formControlName="birthday"
+           placeholder="Birthday">
+  </div>
+  <div>
+    <b>Gender: </b>
+    <input type="radio"
+           formControlName="gender"
+           value="male">Male
+    <input type="radio"
+           formControlName="gender"
+           value="female">Female
+  </div>
+  <button (click)="editProfile()"
+          [disabled]="form.invalid">Save</button>
+</form>

@@ -93,6 +93,19 @@ export class CurrentUserService {
     return this._http.post<IUser>(this._usersUrl, { user: user });
   }
 
+  public editProfile(user: IUser): Observable<IUser> {
+    return Observable.create((observer: Observer<IUser>) => {
+      this._http
+        .put(this._profileUrl, { user: user })
+        .subscribe(
+          (curUser: IUser) => {
+            this._currentUser = curUser;
+          },
+          error => observer.error(error)
+        );
+    });
+  }
+
   public signOut(): Observable<boolean> {
     return Observable.create((observer: Observer<boolean>) => {
       this._http

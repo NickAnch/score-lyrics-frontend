@@ -1,9 +1,16 @@
 <nav class="main">
   <a routerLink="">Home</a>
   <a routerLink="/songs">All songs</a>
-  <a routerLink="/users/sign-in" *ngIf="!isLogged">Sign In</a>
-  <a routerLink="/users/sign-up" *ngIf="!isLogged">Sign Up</a>
-  <a routerLink="/songs/create" *ngIf="isLogged">Add song</a>
-  <a (click)="signOut()" *ngIf="isLogged">Exit</a>
+
+  <ng-container *ngIf="isLogged; else authPanel">
+    <a routerLink="/songs/create">Add song</a>
+    <a routerLink="/profile">{{ currentUser?.username }}</a>
+    <a (click)="signOut()">Exit</a>
+  </ng-container>
+
+  <ng-template #authPanel>
+    <a routerLink="/users/sign-in">Sign In</a>
+    <a routerLink="/users/sign-up">Sign Up</a>
+  </ng-template>
 </nav>
 <h3>Score lyrics</h3>
