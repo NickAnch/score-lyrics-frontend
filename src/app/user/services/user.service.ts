@@ -18,11 +18,11 @@ export class UserService {
     const url = `${this._apiUrl}/${id}`;
     return Observable.create((observer: Observer<IUser>) => {
       this._http.get<IUser>(url).subscribe(
-        response => {
+        (response) => {
           observer.next(response);
           observer.complete();
         },
-        error => {
+        (error) => {
           observer.error(error);
           observer.complete();
         }
