@@ -25,7 +25,7 @@ export class SongService {
     return this._http.get<ISong>(url);
   }
 
-  public updateSong(song: ISong, id: Number): Observable<ISong> {
+  public updateSong(song: ISong, id: number): Observable<ISong> {
     const url = `${this._songsUrl}/${id}`;
     return Observable.create((observer: Observer<ISong>) => {
       this._http
