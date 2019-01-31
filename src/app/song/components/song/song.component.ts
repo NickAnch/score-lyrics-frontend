@@ -10,7 +10,7 @@ import {
   IUser,
 } from '@lib/models';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RatingService } from '@app/song/services';
 
 @Component({
@@ -22,6 +22,7 @@ export class SongComponent implements OnInit, OnDestroy {
   public song: ISong;
   public vote: IVote;
   public user: IUser;
+  public isUserSong: boolean;
   private songId = +this._route.snapshot.paramMap.get('id');
 
   constructor(
@@ -29,6 +30,7 @@ export class SongComponent implements OnInit, OnDestroy {
     private _currentUser: CurrentUserService,
     private _ratingService: RatingService,
     private _route: ActivatedRoute,
+    private _router: Router,
   ) { }
 
   public ngOnInit() {
@@ -45,6 +47,11 @@ export class SongComponent implements OnInit, OnDestroy {
         (song) => {
           this.song = song;
           this.vote = song.vote;
+          // Much more better use getter in such situation
+          // but by some reasons song object is undefined in getter method
+          // but! vote is available in getter, nethertheless it's part of a song
+          // lol
+          this.isUserSong = this.user.id === this.song.author.id;
           if (this.vote === null && this.user) {
             this.vote = {
               mark: null,
@@ -80,6 +87,13 @@ export class SongComponent implements OnInit, OnDestroy {
       this.song.rating[key]++;
       this.vote.mark = condition;
     }
+  }
+
+  public navigateToEditSong(): void {
+    // TODO: realise why navigate applies only 'songs/edit' URL
+    // instead just 'edit'.
+    // I wrote this comment to discuss it on a code review.
+    this._router.navigate(['songs/edit', this.songId]);
   }
 
   get isLiked(): boolean {

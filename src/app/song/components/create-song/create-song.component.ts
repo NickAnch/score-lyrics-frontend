@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ManageSongService, GenreService } from '@app/song/services';
 import { IGenre } from '@lib/models';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-song',
@@ -12,7 +12,6 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./create-song.component.scss']
 })
 export class CreateSongComponent implements OnInit, OnDestroy {
-  public form: FormGroup;
   public genres: IGenre[];
 
   constructor(
@@ -30,34 +29,12 @@ export class CreateSongComponent implements OnInit, OnDestroy {
         this.genres = genres;
         this._spinner.hide();
       });
-
-    this.form = new FormGroup({
-      singer: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
-      name: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
-      linkUrl: new FormControl('', [
-        Validators
-          .pattern('^(https|http):\/\/www\.youtube\.com\/embed\/[A-z0-9]+'),
-      ]),
-      genre_id: new FormControl('', [
-        Validators.required,
-      ]),
-      lyrics: new FormControl('', [
-        Validators.required,
-      ]),
-      translate: new FormControl(''),
-    });
   }
 
   public ngOnDestroy() { }
 
-  public addSong(): void {
-    this._manageSong.addSong(this.form.value)
+  public sendSong(form: FormGroup): void {
+    this._manageSong.addSong(form.value)
       .subscribe(() => this._router.navigate(['/']) );
   }
 

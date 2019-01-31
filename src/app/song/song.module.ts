@@ -4,6 +4,8 @@ import {
   SongComponent,
   SongListComponent,
   CreateSongComponent,
+  SongFormComponent,
+  EditSongComponent,
 } from './components';
 import { SongRoutingModule } from '@app/song/song-routing.module';
 import { SongsViewComponent } from './views';
@@ -23,6 +25,8 @@ import { SafePipe } from '@app/song/services/safe.pipe';
     SongsViewComponent,
     CreateSongComponent,
     SafePipe,
+    SongFormComponent,
+    EditSongComponent,
   ],
   imports: [
     CommonModule,

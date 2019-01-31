@@ -15,6 +15,8 @@ export class SongListComponent implements OnDestroy, OnInit {
     private _songService: SongService,
   ) { }
 
+  // Why we need empty onDestroy interfaces? I've saw it a lot of times.
+  // Any way, even if we need them, why they are in a wrong order?)
   public ngOnDestroy() { }
 
   public ngOnInit() {

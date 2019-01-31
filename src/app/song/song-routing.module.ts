@@ -4,6 +4,7 @@ import {
   SongComponent,
   SongListComponent,
   CreateSongComponent,
+  EditSongComponent,
 } from '@app/song/components';
 import { SongsViewComponent } from './views';
 import { CurrentUserGuard } from '@app/core/services/current-user.guard';
@@ -26,6 +27,11 @@ const routes: Routes = [
         path: ':id',
         component: SongComponent,
       },
+      {
+        path: 'edit/:id',
+        component: EditSongComponent,
+        canActivate: [CurrentUserGuard]
+      }
     ],
   },
 ];
