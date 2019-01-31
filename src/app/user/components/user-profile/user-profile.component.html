@@ -1,0 +1,15 @@
+<h4>
+  User info:
+</h4>
+<div>
+  <b>Name: </b> {{ user?.username }}
+</div>
+<div>
+  <b>gender: </b> {{ user?.gender }}
+</div>
+<h4>
+  User songs:
+</h4>
+<div *ngFor="let song of user?.songs">
+  <span (click)="showSong(song.id)">{{ song.singer }} - {{ song.name }}</span>
+</div>

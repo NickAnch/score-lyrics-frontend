@@ -24,8 +24,9 @@
   <b>translate:</b> <br> {{ song?.translate }}
 </div>
 <div>
-  <b>Author of the lyrics:</b> {{ song?.author.username }}
-                               {{ song?.author.birthday }}
+  <b>Author of the lyrics:</b>
+  <span (click)="showUserProfile()"> {{ song?.author.username }} </span>
+  {{ song?.author.birthday }}
 </div>
 <iframe *ngIf="song?.linkUrl"
         [src]="song?.linkUrl | safe">
