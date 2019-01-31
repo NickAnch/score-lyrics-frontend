@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {
   SignUpComponent,
   SignInComponent,
- } from '@app/user/components';
+  UserProfileComponent,
+} from '@app/user/components';
 import { UserRoutingModule } from '@app/user/user-routing.module';
 import { UserViewComponent } from '@app/user/views';
 import {
@@ -16,6 +17,7 @@ import {
     UserViewComponent,
     SignUpComponent,
     SignInComponent,
+    UserProfileComponent,
   ],
   imports: [
     CommonModule,

@@ -51,7 +51,7 @@ export class SongComponent implements OnInit, OnDestroy {
           // but by some reasons song object is undefined in getter method
           // but! vote is available in getter, nethertheless it's part of a song
           // lol
-          this.isUserSong = this.user.id === this.song.author.id;
+          this.isUserSong = this.user && this.user.id === this.song.author.id;
           if (this.vote === null && this.user) {
             this.vote = {
               mark: null,
@@ -94,6 +94,14 @@ export class SongComponent implements OnInit, OnDestroy {
     // instead just 'edit'.
     // I wrote this comment to discuss it on a code review.
     this._router.navigate(['songs/edit', this.songId]);
+  }
+
+  public showUserProfile(): void {
+    if (this.isUserSong) {
+      this._router.navigate(['profile']);
+    } else {
+      this._router.navigate(['users', this.song.author.id]);
+    }
   }
 
   get isLiked(): boolean {

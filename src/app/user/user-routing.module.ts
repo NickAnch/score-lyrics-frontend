@@ -4,6 +4,7 @@ import { UserViewComponent } from './views';
 import {
   SignInComponent,
   SignUpComponent,
+  UserProfileComponent,
 } from '@app/user/components';
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
         path: 'sign-up',
         component: SignUpComponent,
       },
+      {
+        path: ':id',
+        component: UserProfileComponent
+      }
     ],
   },
 ];
