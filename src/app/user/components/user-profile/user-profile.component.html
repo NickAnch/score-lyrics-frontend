@@ -13,6 +13,4 @@
 <h4>
   User songs:
 </h4>
-<div *ngFor="let song of user?.songs">
-  <span (click)="showSong(song.id)">{{ song.singer }} - {{ song.name }}</span>
-</div>
+<app-songs [songs]="user?.songs"></app-songs>

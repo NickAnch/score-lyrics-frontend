@@ -1,12 +1,8 @@
-<div>
-  <tabset #staticTabs>
-    <tab heading="Top Songs"
-         (select)="selectTab('most_liked')">
-      <app-songs [songs]="songs"></app-songs>
-    </tab>
-    <tab heading="Latest"
-         (select)="selectTab('latest')">
-      <app-songs [songs]="songs"></app-songs>
-    </tab>
-  </tabset>
-</div>
+<mat-tab-group>
+  <mat-tab label="Top Songs">
+    <app-songs [songs]="songs"></app-songs>
+  </mat-tab>
+  <mat-tab label="Latest">
+    <app-songs [songs]="songs"></app-songs>
+  </mat-tab>
+</mat-tab-group>
