@@ -1,11 +1,20 @@
-<ul>
-  <li *ngFor="let song of songs;
-              trackBy: trackByFn">
-    <a routerLink="/songs/{{ song.id }}">
+<mat-nav-list>
+  <mat-list-item *ngFor="let song of songs;
+                         trackBy: trackByFn">
+    <a matLine routerLink="/songs/{{ song.id }}">
       {{ song.singer }} - {{ song.name }}
     </a>
-    likes: {{ song.rating.likes }},
-    dislikes: {{ song.rating.dislikes }},
-    views: {{ song.views }}
-  </li>
-</ul>
+    <div class="rating">
+      <mat-icon class="icon-like">thumb_up</mat-icon>
+      <span>{{ song.rating.likes }}</span>
+    </div>
+    <div class="rating">
+      <mat-icon class="icon-dislike">thumb_down</mat-icon>
+      <span>{{ song.rating.dislikes }}</span>
+    </div>
+    <div class="rating">
+      <mat-icon>visibility</mat-icon>
+      <span>{{ song.views }}</span>
+    </div>
+  </mat-list-item>
+</mat-nav-list>
