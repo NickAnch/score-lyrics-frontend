@@ -6,8 +6,10 @@
 
       <ng-container *ngIf="isLogged; else authPanel">
         <button mat-button routerLink="/songs/create">Add song</button>
-        <button mat-button routerLink="/profile">{{ currentUser?.username }}</button>
-        <button mat-button (click)="signOut()">Exit</button>
+        <div class="user-block">
+          <button mat-button routerLink="/profile">{{ currentUser?.username }}</button>
+          <button mat-button (click)="signOut()">Exit</button>
+        </div>
       </ng-container>
 
       <ng-template #authPanel>
