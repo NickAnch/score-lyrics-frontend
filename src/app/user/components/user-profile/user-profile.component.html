@@ -1,16 +1,9 @@
-<h4>
-  User info:
-</h4>
-<div>
-  <b>Name: </b> {{ user?.username }}
-</div>
-<div>
-  <b>gender: </b> {{ user?.gender }}
-</div>
-<div>
-  <b>birthday: </b> {{ user?.birthday }}
-</div>
-<h4>
-  User songs:
-</h4>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ user?.username }}</mat-card-title>
+    <mat-card-subtitle>
+      {{ user?.birthday | date  }} | {{ user?.gender | titlecase }}
+    </mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
 <app-songs [songs]="user?.songs"></app-songs>

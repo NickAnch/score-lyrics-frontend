@@ -17,6 +17,7 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
+  styleUrls: ['./profile-edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileEditComponent implements OnInit, OnDestroy {

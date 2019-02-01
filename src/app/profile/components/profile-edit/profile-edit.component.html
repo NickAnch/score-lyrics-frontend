@@ -1,25 +1,27 @@
 <form [formGroup]="form">
-  <div>
-    <b>Nickname* : </b>
-    <input formControlName="username"
-           placeholder="Username">
-  </div>
-  <div>
-    <b>Birthday: </b>
-    <input type="date"
-           [value]="profile.birthday"
-           formControlName="birthday"
-           placeholder="Birthday">
-  </div>
-  <div>
-    <b>Gender: </b>
-    <input type="radio"
-           formControlName="gender"
-           value="male">Male
-    <input type="radio"
-           formControlName="gender"
-           value="female">Female
-  </div>
-  <button (click)="editProfile()"
-          [disabled]="form.invalid">Save</button>
+  <mat-form-field appearance="outline">
+    <mat-label>UserName</mat-label>
+    <input matInput
+           placeholder="UserName"
+           formControlName="username">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker"
+                    formControlName="birthday"
+                    placeholder="Birthday">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-radio-group formControlName="gender">
+    <mat-radio-button value="male">
+      Male
+    </mat-radio-button>
+    <mat-radio-button value="female">
+      Female
+    </mat-radio-button>
+  </mat-radio-group>
+  <button mat-raised-button
+          (click)="editProfile()"
+          [disabled]="form.invalid"
+          color="primary">Save</button>
 </form>
