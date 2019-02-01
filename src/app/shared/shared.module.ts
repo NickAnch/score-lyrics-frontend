@@ -11,6 +11,8 @@ import {
   MatMenuModule,
   MatFormFieldModule,
   MatInputModule,
+  MatCardModule,
+  MatBadgeModule,
 } from '@angular/material';
 
 @NgModule({
@@ -27,6 +29,8 @@ import {
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
+    MatBadgeModule,
   ],
   declarations: [
     SongsComponent,
