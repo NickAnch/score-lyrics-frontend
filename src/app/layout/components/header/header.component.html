@@ -1,16 +1,23 @@
-<nav class="main">
-  <a routerLink="">Home</a>
-  <a routerLink="/songs">All songs</a>
+<mat-toolbar color="primary">
+  <mat-toolbar-row class="header">
+    <nav class="main">
+      <button mat-button routerLink="">Home</button>
+      <button mat-button routerLink="/songs">All songs</button>
 
-  <ng-container *ngIf="isLogged; else authPanel">
-    <a routerLink="/songs/create">Add song</a>
-    <a routerLink="/profile">{{ currentUser?.username }}</a>
-    <a (click)="signOut()">Exit</a>
-  </ng-container>
+      <ng-container *ngIf="isLogged; else authPanel">
+        <button mat-button routerLink="/songs/create">Add song</button>
+        <button mat-button routerLink="/profile">{{ currentUser?.username }}</button>
+        <button mat-button (click)="signOut()">Exit</button>
+      </ng-container>
 
-  <ng-template #authPanel>
-    <a routerLink="/users/sign-in">Sign In</a>
-    <a routerLink="/users/sign-up">Sign Up</a>
-  </ng-template>
-</nav>
-<h3>Score lyrics</h3>
+      <ng-template #authPanel>
+        <button mat-button routerLink="/users/sign-in">Sign In</button>
+        <button mat-button routerLink="/users/sign-up">Sign Up</button>
+      </ng-template>
+    </nav>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <h3>Score lyrics</h3>
+  </mat-toolbar-row>
+</mat-toolbar>
