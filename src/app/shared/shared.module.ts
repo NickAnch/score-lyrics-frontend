@@ -5,6 +5,10 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { SongsComponent } from '@app/shared/components';
 import { RouterModule } from '@angular/router';
 
+import {
+  MatButtonModule,
+} from '@angular/material';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +18,7 @@ import { RouterModule } from '@angular/router';
   exports: [
     TabsModule,
     SongsComponent,
+    MatButtonModule,
   ],
   declarations: [
     SongsComponent,
