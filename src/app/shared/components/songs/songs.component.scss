@@ -1,0 +1,20 @@
+mat-icon {
+  margin: 0 8px;
+  font-size: 21px;
+}
+
+.icon {
+  &-like {
+    color: #7FFF00;
+  }
+
+  &-dislike {
+    color: #FF0000;
+  }
+}
+
+.rating {
+  display: flex;
+  justify-content: right;
+  width: 15%;
+}
