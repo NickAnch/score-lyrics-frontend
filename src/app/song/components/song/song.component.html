@@ -1,44 +1,5 @@
-<!-- <div>
-  {{ song?.singer }} - {{ song?.name }}
-</div>
-<div>
-  <b>Genre:</b> {{ song?.genre_name }}
-</div>
-<div>
-  <b>views:</b> {{ song?.views }}
-</div>
-<div>
-  <button (click)="putMark('likes')"
-          [ngClass]="{ clicked: isLiked }">
-    Like
-  </button> {{ song?.rating.likes }} <br>
-  <button (click)="putMark('dislikes')"
-          [ngClass]="{ clicked: isDisliked }">
-    Dislike
-  </button> {{ song?.rating.dislikes }}
-</div>
-<div>
-  <b>lyrics: </b> <br> {{ song?.lyrics }}
-</div>
-<div *ngIf="song?.translate">
-  <b>translate:</b> <br> {{ song?.translate }}
-</div>
-<div>
-  <b>Author of the lyrics:</b>
-  <span (click)="showUserProfile()"> {{ song?.author.username }} </span>
-  {{ song?.author.birthday }}
-</div>
-<div>
-  <iframe *ngIf="song?.linkUrl"
-        [src]="song?.linkUrl | safe">
-</iframe>
-</div>
-<button [hidden]="!isUserSong" (click)="navigateToEditSong()">
-  Edit song
-</button> -->
 <mat-card>
   <mat-card-header>
-    <!-- <div mat-card-avatar class="example-header-image"></div> -->
     <mat-card-title>{{ song?.singer }}</mat-card-title>
     <mat-card-subtitle>{{ song?.name }} | {{ song?.genre_name }}</mat-card-subtitle>
   </mat-card-header>
