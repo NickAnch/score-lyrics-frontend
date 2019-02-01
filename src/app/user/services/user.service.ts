@@ -26,8 +26,8 @@ export class UserService {
           observer.error(error);
           observer.complete();
         }
-      )
-    })
+      );
+    });
   }
 
 }
