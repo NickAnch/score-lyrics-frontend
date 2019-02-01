@@ -1,18 +1,45 @@
-<form [formGroup]="form">
-  <input formControlName="singer"
-         placeholder="Singer"> <br>
-  <input formControlName="name"
-         placeholder="Name"><br>
-  <input formControlName="linkUrl"
-         placeholder="Link"><br>
-  <select formControlName="genre_id">
-    <option disabled>Choose genre</option>
-    <option *ngFor="let genre of genres"
-            [ngValue]="genre.id">
-      {{ genre.name }}
-    </option>
-  </select> <br>
-  <textarea formControlName="lyrics"></textarea><br>
-  <textarea formControlName="translate"></textarea><br>
-  <button (click)="emitForm()" [disabled]="form.invalid">Submit</button>
+<form [formGroup]="form" class="form-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Singer</mat-label>
+    <input matInput
+           placeholder="Artist Name"
+           formControlName="singer">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput
+           placeholder="Song Name"
+           formControlName="name">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>YouTube Link</mat-label>
+    <input matInput
+           formControlName="linkUrl">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Genre" formControlName="genre_id">
+      <mat-option *ngFor="let genre of genres"
+                  [value]="genre.id">
+        {{ genre.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput
+              placeholder="Lyrics"
+              formControlName="lyrics">
+    </textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput
+              placeholder="Translation"
+              formControlName="translate">
+    </textarea>
+  </mat-form-field>
+  <button (click)="emitForm()"
+          color="primary"
+          mat-raised-button
+          [disabled]="form.invalid">
+    Submit
+  </button>
 </form>

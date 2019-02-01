@@ -16,6 +16,7 @@ import {
   MatTabsModule,
   MatListModule,
   MatIconModule,
+  MatSelectModule,
 } from '@angular/material';
 
 @NgModule({
@@ -39,6 +40,7 @@ import {
     MatTabsModule,
     MatListModule,
     MatIconModule,
+    MatSelectModule,
   ],
   declarations: [
     SongsComponent,
