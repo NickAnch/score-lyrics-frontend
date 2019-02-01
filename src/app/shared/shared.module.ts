@@ -7,7 +7,8 @@ import { RouterModule } from '@angular/router';
 
 import {
   MatButtonModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatMenuModule,
 } from '@angular/material';
 
 @NgModule({
@@ -20,7 +21,8 @@ import {
     TabsModule,
     SongsComponent,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule,
   ],
   declarations: [
     SongsComponent,

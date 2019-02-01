@@ -1,20 +1,24 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="header">
     <nav class="main">
-      <button mat-button routerLink="">Home</button>
-      <button mat-button routerLink="/songs">All songs</button>
+      <div>
+        <button mat-button routerLink="">Home</button>
+        <button mat-button routerLink="/songs">All songs</button>
+      </div>
 
-      <ng-container *ngIf="isLogged; else authPanel">
+      <div *ngIf="isLogged; else authPanel" class="nav-buttons">
         <button mat-button routerLink="/songs/create">Add song</button>
         <div class="user-block">
           <button mat-button routerLink="/profile">{{ currentUser?.username }}</button>
           <button mat-button (click)="signOut()">Exit</button>
         </div>
-      </ng-container>
+      </div>
 
       <ng-template #authPanel>
-        <button mat-button routerLink="/users/sign-in">Sign In</button>
-        <button mat-button routerLink="/users/sign-up">Sign Up</button>
+        <div>
+          <button mat-button routerLink="/users/sign-in">Sign In</button>
+          <button mat-button routerLink="/users/sign-up">Sign Up</button>
+        </div>
       </ng-template>
     </nav>
   </mat-toolbar-row>
