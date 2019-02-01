@@ -1,11 +1,21 @@
 <form [formGroup]="form"
       (submit)="signIn()">
-  <h5>SING IN</h5>
-  <input formControlName="email"
-         placeholder="Email">
-  <input formControlName="password"
-         placeholder="password"
-         type="password">
-  <button [disabled]="form.invalid">Submit</button>
-  <button mat-button>Ghbdtn</button>
+  <h5>Sing in</h5>
+  <mat-form-field appearance="outline">
+    <mat-label>Login</mat-label>
+    <input matInput
+           placeholder="example@mail.com"
+           formControlName="email">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput
+           formControlName="password"
+           type="password">
+  </mat-form-field>
+  <button mat-raised-button
+          [disabled]="form.invalid"
+          color="primary">
+    Submit
+  </button>
 </form>

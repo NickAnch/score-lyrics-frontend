@@ -1,12 +1,35 @@
 <form [formGroup]="form"
       (submit)="signUp()">
-  <h5>SING UP</h5>
-  <input formControlName="userName"
+  <h5>Sing up</h5>
+  <!-- <input formControlName="userName"
          placeholder="Username">
   <input formControlName="email"
          placeholder="Email">
   <input formControlName="password"
          placeholder="password"
-         type="password">
-  <button [disabled]="form.invalid">Submit</button>
+         type="password"> -->
+
+  <mat-form-field appearance="outline">
+    <mat-label>Username</mat-label>
+    <input matInput
+           placeholder="Username"
+           formControlName="userName">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput
+           placeholder="example@mail.com"
+           formControlName="email">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput
+           type="password"
+           formControlName="password">
+  </mat-form-field>
+  <button mat-raised-button
+          [disabled]="form.invalid"
+          color="primary">
+    Submit
+  </button>
 </form>

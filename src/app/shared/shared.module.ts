@@ -9,6 +9,8 @@ import {
   MatButtonModule,
   MatToolbarModule,
   MatMenuModule,
+  MatFormFieldModule,
+  MatInputModule,
 } from '@angular/material';
 
 @NgModule({
@@ -23,6 +25,8 @@ import {
     MatButtonModule,
     MatToolbarModule,
     MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   declarations: [
     SongsComponent,

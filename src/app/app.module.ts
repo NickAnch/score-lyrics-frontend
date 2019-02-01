@@ -9,6 +9,7 @@ import { LayoutModule } from '@app/layout/layout.module';
 import { SharedModule } from '@app/shared/shared.module';
 import { CoreModule } from '@app/core/core.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     LayoutModule,
     SharedModule,
     NgxSpinnerModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
