@@ -1,10 +1,13 @@
-<h4>Your Profile</h4>
-<div>
-  <b>Email:</b> {{ profile?.email }}
-</div>
-<app-profile-edit *ngIf="profile"
-                  [profile]="profile"></app-profile-edit>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Profile</mat-card-title>
+    <mat-card-subtitle>{{ profile?.email }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <app-profile-edit *ngIf="profile"
+                      [profile]="profile"></app-profile-edit>
+  </mat-card-content>
+</mat-card>
 <div *ngIf="profile?.songs">
-  <b> Your added songs:</b>
   <app-songs [songs]="profile.songs"></app-songs>
 </div>
