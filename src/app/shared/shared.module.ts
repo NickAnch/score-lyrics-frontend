@@ -17,6 +17,9 @@ import {
   MatListModule,
   MatIconModule,
   MatSelectModule,
+  MatRadioModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 } from '@angular/material';
 
 @NgModule({
@@ -41,6 +44,9 @@ import {
     MatListModule,
     MatIconModule,
     MatSelectModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   declarations: [
     SongsComponent,
