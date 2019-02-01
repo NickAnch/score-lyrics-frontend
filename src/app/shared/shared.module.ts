@@ -13,6 +13,8 @@ import {
   MatInputModule,
   MatCardModule,
   MatBadgeModule,
+  MatListModule,
+  MatIconModule,
 } from '@angular/material';
 
 @NgModule({
@@ -20,6 +22,8 @@ import {
     CommonModule,
     TabsModule.forRoot(),
     RouterModule,
+    MatListModule,
+    MatIconModule,
   ],
   exports: [
     TabsModule,
@@ -31,6 +35,8 @@ import {
     MatInputModule,
     MatCardModule,
     MatBadgeModule,
+    MatListModule,
+    MatIconModule,
   ],
   declarations: [
     SongsComponent,
