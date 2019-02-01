@@ -1,8 +1,8 @@
 <mat-tab-group>
-  <mat-tab label="Top Songs">
-    <app-songs [songs]="songs"></app-songs>
+  <mat-tab label="Top Songs" (click)="lil()">
+    <app-songs [songs]="topSongs"></app-songs>
   </mat-tab>
   <mat-tab label="Latest">
-    <app-songs [songs]="songs"></app-songs>
+    <app-songs [songs]="latestSongs"></app-songs>
   </mat-tab>
 </mat-tab-group>

@@ -11,12 +11,9 @@ import {
   MatMenuModule,
   MatFormFieldModule,
   MatInputModule,
-<<<<<<< Updated upstream
-=======
   MatCardModule,
   MatBadgeModule,
   MatTabsModule,
->>>>>>> Stashed changes
 } from '@angular/material';
 
 @NgModule({
@@ -33,12 +30,9 @@ import {
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-<<<<<<< Updated upstream
-=======
     MatCardModule,
     MatBadgeModule,
     MatTabsModule,
->>>>>>> Stashed changes
   ],
   declarations: [
     SongsComponent,

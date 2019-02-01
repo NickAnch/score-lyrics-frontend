@@ -9,25 +9,26 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
   styleUrls: ['./filtered-songs.component.scss']
 })
 export class FilteredSongsComponent implements OnInit, OnDestroy {
-  public songs: ISong[];
+  public topSongs: ISong[];
+  public latestSongs: ISong[];
 
   constructor(
     private _songService: SongService,
   ) {}
 
   public ngOnInit() {
-    this.selectTab('most_liked');
+    this._songService.getSongs('filtered')
+      .pipe(untilDestroyed(this))
+      .subscribe(latestSongs => {
+        this.latestSongs = latestSongs;
+      });
+    this._songService.getSongs('most_liked')
+      .pipe(untilDestroyed(this))
+      .subscribe(topSongs => {
+        this.topSongs = topSongs;
+      });
   }
 
   public ngOnDestroy() {}
 
-  public selectTab(tab: string): void {
-    this.getSongs(tab);
-  }
-
-  public getSongs(tab: string): void {
-    this._songService.getSongs(tab)
-      .pipe(untilDestroyed(this))
-      .subscribe(songs => this.songs = songs);
-  }
 }
