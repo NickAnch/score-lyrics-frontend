@@ -13,6 +13,7 @@ import {
   Validators
 } from '@angular/forms';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-profile-edit',
@@ -26,6 +27,7 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
 
   constructor(
     private _currentUserService: CurrentUserService,
+    private _snackBar: MatSnackBar,
   ) { }
 
   public ngOnInit() {
@@ -43,7 +45,13 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
   public editProfile() {
     this._currentUserService.editProfile(this.form.value)
       .pipe(untilDestroyed(this))
-      .subscribe();
+      .subscribe(
+        () => {
+          this._snackBar.open('Profile data has been saved.', 'Undo', {
+            duration: 2000
+          });
+        }
+      );
   }
 
 }

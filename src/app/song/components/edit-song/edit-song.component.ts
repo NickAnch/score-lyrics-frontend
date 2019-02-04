@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GenreService, ManageSongService } from '@app/song/services';
 import { FormGroup } from '@angular/forms';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit-song',
@@ -22,6 +23,7 @@ export class EditSongComponent implements OnInit, OnDestroy {
     private _songService: SongService,
     private _activatedRoute: ActivatedRoute,
     private _genreService: GenreService,
+    private _snackBar: MatSnackBar,
   ) { }
 
   public ngOnInit() {
@@ -41,7 +43,12 @@ export class EditSongComponent implements OnInit, OnDestroy {
   public updateSong(form: FormGroup): void {
     this._manageSongService.updateSong(form.value, this._songId)
       .pipe(untilDestroyed(this))
-      .subscribe(() => this._router.navigate(['songs', this._songId]));
+      .subscribe(() => {
+        this._snackBar.open('The song was edited.', 'Undo', {
+          duration: 2000
+        });
+        this._router.navigate(['songs', this._songId]);
+      });
   }
 
 }
