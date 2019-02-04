@@ -100,6 +100,8 @@ export class CurrentUserService {
         .subscribe(
           (curUser: IUser) => {
             this._currentUser = curUser;
+            observer.next(curUser);
+            observer.complete();
           },
           error => observer.error(error)
         );

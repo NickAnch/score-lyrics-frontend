@@ -4,6 +4,7 @@ import { IGenre } from '@lib/models';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-create-song',
@@ -17,6 +18,7 @@ export class CreateSongComponent implements OnInit, OnDestroy {
     private _manageSong: ManageSongService,
     private _genreService: GenreService,
     private _router: Router,
+    private _snackBar: MatSnackBar,
   ) { }
 
   public ngOnInit() {
@@ -31,7 +33,12 @@ export class CreateSongComponent implements OnInit, OnDestroy {
 
   public sendSong(form: FormGroup): void {
     this._manageSong.addSong(form.value)
-      .subscribe(() => this._router.navigate(['/']) );
+      .subscribe(() => {
+        this._snackBar.open('A song was added.', 'Undo', {
+          duration: 2000
+        });
+        this._router.navigate(['/']);
+      });
   }
 
 }
