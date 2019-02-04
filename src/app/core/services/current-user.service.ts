@@ -88,11 +88,18 @@ export class CurrentUserService {
   }
 
   public editProfile(user: IUser): Observable<IUser> {
-    return this._http
-      .put<IUser>(this._profileUrl, { user: user })
-      .pipe(
-        tap((curUser: IUser) => this._currentUser = curUser),
-      );
+    return Observable.create((observer: Observer<IUser>) => {
+      this._http
+        .put(this._profileUrl, { user: user })
+        .subscribe(
+          (curUser: IUser) => {
+            this._currentUser = curUser;
+            observer.next(curUser);
+            observer.complete();
+          },
+          error => observer.error(error)
+        );
+    });
   }
 
   public signOut(): Observable<boolean> {
