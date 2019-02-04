@@ -8,7 +8,7 @@ Applications for viewing and rating lyrics.
 - `TypeScript`, `ES6`, `ES7`
 - `Angular 7`
 - `npm v6.4.1`
-- `Angular Material`
+- `Angular Material 7`
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
