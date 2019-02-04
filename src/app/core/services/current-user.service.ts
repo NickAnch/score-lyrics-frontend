@@ -4,8 +4,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   Observable,
   Observer,
+  of,
 } from 'rxjs';
 import { IUser } from '@lib/models';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -34,23 +36,15 @@ export class CurrentUserService {
   }
 
   public getCurrentUser(): Observable<IUser> {
-    return Observable.create((observer: Observer<IUser>) => {
-      if (localStorage.getItem('token')) {
-        this._http
-          .get<IUser>(this._profileUrl)
-          .subscribe(
-            (res) => {
-              this._currentUser = res;
-              observer.next(res);
-              observer.complete();
-            },
-            error => observer.error(error)
-          );
-      } else {
-        observer.next(null);
-        observer.complete();
-      }
-    });
+    if (!localStorage.getItem('token')) {
+      return of(null);
+    }
+
+    return this._http
+      .get<IUser>(this._profileUrl)
+      .pipe(
+        tap(user => this._currentUser = user),
+      );
   }
 
   public signIn(email: string, password: string): Observable<boolean> {
