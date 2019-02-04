@@ -12,7 +12,6 @@ import {
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RatingService } from '@app/song/services';
-import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-song',
@@ -32,7 +31,6 @@ export class SongComponent implements OnInit, OnDestroy {
     private _ratingService: RatingService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _snackBar: MatSnackBar,
   ) { }
 
   public ngOnInit() {
@@ -61,29 +59,8 @@ export class SongComponent implements OnInit, OnDestroy {
   }
 
   public rateSong(mark): void {
-    let rating: string;
-    switch (mark) {
-      case true: {
-        rating = 'liked';
-        break;
-      }
-      case false: {
-        rating = 'disliked';
-        break;
-      }
-      case null: {
-        rating = 'canceled rating of';
-        break;
-      }
-    }
     this._ratingService.rateSong(this.songId, mark)
-      .subscribe(
-        () => {
-          this._snackBar.open(`You ${rating} the song and lyrics.`, 'Undo', {
-            duration: 2000
-          });
-        }
-      );
+      .subscribe();
   }
 
   public putMark(key: string): void {

@@ -20,7 +20,6 @@ import {
   MatRadioModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatSnackBarModule,
 } from '@angular/material';
 
 @NgModule({
@@ -48,7 +47,6 @@ import {
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSnackBarModule,
   ],
   declarations: [
     SongsComponent,
