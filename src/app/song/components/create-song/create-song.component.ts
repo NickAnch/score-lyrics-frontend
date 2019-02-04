@@ -18,16 +18,13 @@ export class CreateSongComponent implements OnInit, OnDestroy {
     private _manageSong: ManageSongService,
     private _genreService: GenreService,
     private _router: Router,
-    private _spinner: NgxSpinnerService,
   ) { }
 
   public ngOnInit() {
-    this._spinner.show();
     this._genreService.getGenres()
       .pipe(untilDestroyed(this))
       .subscribe(genres => {
         this.genres = genres;
-        this._spinner.hide();
       });
   }
 

@@ -47,10 +47,6 @@ export class SongComponent implements OnInit, OnDestroy {
         (song) => {
           this.song = song;
           this.vote = song.vote;
-          // Much more better use getter in such situation
-          // but by some reasons song object is undefined in getter method
-          // but! vote is available in getter, nethertheless it's part of a song
-          // lol
           this.isUserSong = this.user && this.user.id === this.song.author.id;
           if (this.vote === null && this.user) {
             this.vote = {
@@ -90,9 +86,6 @@ export class SongComponent implements OnInit, OnDestroy {
   }
 
   public navigateToEditSong(): void {
-    // TODO: realise why navigate applies only 'songs/edit' URL
-    // instead just 'edit'.
-    // I wrote this comment to discuss it on a code review.
     this._router.navigate(['songs/edit', this.songId]);
   }
 
