@@ -16,6 +16,11 @@ export class SongsComponent {
 
   constructor() { }
 
+  // FIXME:
+  // use _ for mark unused parameters (ts lint swear in your case)
+  // and try to use types for parameters
+
+  // trackByFn(_, song: ISong) {...
   trackByFn(index, song) {
     return song.id;
   }

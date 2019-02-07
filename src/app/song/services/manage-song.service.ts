@@ -18,6 +18,9 @@ export class ManageSongService {
 
   public updateSong(song: ISong, id: number): Observable<ISong> {
     const url = `${this._songsUrl}/${id}`;
+    // FIXME: REMOVE IT. WTF? Just use
+    //        return this._http.put<ISong>(url, song)
+
     return Observable.create((observer: Observer<ISong>) => {
       this._http
         .put<ISong>(url, song)

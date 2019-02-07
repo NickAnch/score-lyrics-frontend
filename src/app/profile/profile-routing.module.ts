@@ -4,6 +4,8 @@ import { ProfileViewComponent } from './views';
 import {
   ProfileComponent,
 } from './components';
+// FIXME:
+// use imports with index.ts ("@app/core/services")
 import { CurrentUserGuard } from '@app/core/services/current-user.guard';
 
 const routes: Routes = [

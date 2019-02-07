@@ -33,6 +33,7 @@ export class EditSongComponent implements OnInit, OnDestroy {
       });
 
     this._genreService.getGenres()
+      // same. use async pipe
       .subscribe((genres: IGenre[]) => {
         this.genres = genres;
       });

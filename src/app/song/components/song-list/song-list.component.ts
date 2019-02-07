@@ -23,6 +23,7 @@ export class SongListComponent implements OnDestroy, OnInit {
 
   public getSongs(): void {
     this._songService.getSongs()
+      // async pipe.
       .pipe(untilDestroyed(this))
       .subscribe(songs => this.songs = songs);
   }
