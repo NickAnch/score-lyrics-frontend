@@ -25,6 +25,10 @@ export class HeaderComponent {
 
   public signOut(): void {
     this._currentUserService.signOut()
+    // RECOMMENDATION:
+    // From my perspective it would be better to remove subscribe from service
+    // you can use pipe(tap(() => navigate-here))
+    // use subscribe beyond the service
     .subscribe(() => {
           this._router.navigate(['users/sign-in']);
         });

@@ -21,6 +21,9 @@ export class CurrentUserGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
+    // FIXME:
+    // WTF ?! Remove this. Use pipe.tap(() => navigate-here)
+    // untilDestroyed(this).
     return Observable.create((observer: Observer<boolean>) => {
       this._currentUserService.getCurrentUser()
         .subscribe(

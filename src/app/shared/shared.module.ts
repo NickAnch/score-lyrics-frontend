@@ -5,6 +5,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { SongsComponent } from '@app/shared/components';
 import { RouterModule } from '@angular/router';
 
+// RECOMMENDATION:
+// It would be better to add an additional material-module
+// and use all that material staff here. In your case it's to much trash
 import {
   MatButtonModule,
   MatToolbarModule,

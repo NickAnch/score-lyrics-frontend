@@ -19,6 +19,7 @@ export class RatingService {
       }
     };
 
+    // FIXME: remove it
     return Observable.create((observer: Observer<IVote>) => {
       this._http
         .post(`${this._songsUrl}/${id}/ratings`, data)

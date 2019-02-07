@@ -22,6 +22,13 @@ export class CreateSongComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit() {
+
+    /* RECOMMENDATION:
+      it would be more beautiful to use this with async pipe.
+      genres$: IGenre[];
+      this.genres$ = this._genreService.getGenres();
+      in this case you may remove untilDestroy and subscribe at all
+    */
     this._genreService.getGenres()
       .pipe(untilDestroyed(this))
       .subscribe(genres => {

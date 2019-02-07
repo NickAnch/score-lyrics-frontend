@@ -32,11 +32,22 @@ export class SongFormComponent implements OnInit {
     vote: null,
     genre_id: null,
   };
+
+  /*
+    RECOMMENDATION:
+     * Divide ALL decorators into 2 lines like and use fucking modifiers (private | public)
+     * EventEmitter is also observable. use $
+     so:
+
+     @Output()
+     public sendSong$: ...
+  */
   @Output() sendSong = new EventEmitter<FormGroup>();
 
   constructor() { }
 
   public ngOnInit() {
+    // use additional function like private _initForm() do not litter ngOnInit
     this.form = new FormGroup({
       singer: new FormControl(this.song.singer, [
         Validators.required,
@@ -47,6 +58,7 @@ export class SongFormComponent implements OnInit {
         Validators.minLength(2),
       ]),
       linkUrl: new FormControl(this.song.linkUrl, [
+        // I have some doubts of using regExp at all, but ok)
         Validators
           .pattern('^(https|http):\/\/www\.youtube\.com\/embed\/[A-z0-9]+'),
       ]),
