@@ -3,7 +3,7 @@ export NVM_DIR="/home/deploy/.nvm";
 nvm use 9.3.0;
 rm -rf dist_timeless;
 npm install;
-ng build --prod --aot;
+npm run build;
 if [ -d "./dist_timeless" ]
 then
   rm -rf dist;
