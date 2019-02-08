@@ -4,7 +4,7 @@
       "user": "deploy",
       "host": ["46.254.19.100"],
       "port": "42777",
-      "ref": "origin/SL-43",
+      "ref": "origin/master",
       "repo": "ssh://git@gitlab.roonyx.team:2222/playground/score-lyrics-frontend.git",
       "path": "/srv/score-lyrics-frontend",
       "post-deploy": "./post-deploy.sh"
