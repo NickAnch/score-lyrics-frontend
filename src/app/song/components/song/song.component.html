@@ -4,12 +4,14 @@
     <mat-card-subtitle>{{ song?.name }} | {{ song?.genre_name }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <pre>
-      {{ song?.lyrics }}
-    </pre>
-    <pre *ngIf="song?.translate">
-      {{ song?.translate }}
-    </pre>
+      <pre>
+        <p class="explanation">LYRICS:</p>
+        {{ song?.lyrics }}
+      </pre>
+      <pre *ngIf="song?.translate">
+        <p class="explanation">TRANSLATION:</p>
+        {{ song?.translate }}
+      </pre>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button

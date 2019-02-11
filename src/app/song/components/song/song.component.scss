@@ -28,5 +28,26 @@ mat-card-content {
 
 mat-card-actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+
+  button {
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 767px) {
+  mat-card-content {
+    display: block;
+  }
+
+  .explanation {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  iframe {
+    height: 300px;
+  }
 }
