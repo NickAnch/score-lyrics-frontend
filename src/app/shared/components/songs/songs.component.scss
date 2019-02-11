@@ -18,3 +18,10 @@ mat-icon {
   justify-content: right;
   width: 15%;
 }
+
+@media (max-width: 767px) {
+  .rating:nth-child(3n + 1),
+  .rating:nth-child(3n + 2) {
+    display: none;
+  }
+}
