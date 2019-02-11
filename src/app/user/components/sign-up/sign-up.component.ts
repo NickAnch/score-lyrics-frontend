@@ -10,7 +10,7 @@ import { CurrentUserService } from '@app/core/services';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  styleUrls: ['../../styles/auth.scss']
 })
 export class SignUpComponent implements OnInit {
   public form: FormGroup;
