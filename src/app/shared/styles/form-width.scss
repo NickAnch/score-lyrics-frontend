@@ -1,0 +1,11 @@
+@media (max-width: 767px) {
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  mat-form-field {
+    width: 30%;
+  }
+}

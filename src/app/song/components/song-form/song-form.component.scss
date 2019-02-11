@@ -4,3 +4,9 @@
   flex-direction: column;
   width: 30%;
 }
+
+@media (max-width: 767px) {
+  .form-container {
+    width: 100%;
+  }
+}
