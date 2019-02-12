@@ -48,7 +48,7 @@ export class SongFormComponent implements OnInit {
       ]),
       linkUrl: new FormControl(this.song.linkUrl, [
         Validators
-          .pattern('^(https|http):\/\/www\.youtube\.com\/embed\/[A-z0-9]+'),
+          .pattern('^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+'),
       ]),
       genre_id: new FormControl(this.song.genre_id, [
         Validators.required,
@@ -60,7 +60,18 @@ export class SongFormComponent implements OnInit {
     });
   }
 
+  private _getYoutubeID(url: string): string {
+    let link: string[];
+    link = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+    return (link[2] !== undefined) ?
+      link[2].split(/[^0-9a-z_\-]/i)[0] : link[0];
+  }
+
   public emitForm(): void {
+    if (this.form.value.linkUrl) {
+      const ID = this._getYoutubeID(this.form.value.linkUrl);
+      this.form.value.linkUrl = `https://www.youtube.com/embed/${ID}`;
+    }
     this.sendSong.emit(this.form);
   }
 
