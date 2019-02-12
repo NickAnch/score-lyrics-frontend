@@ -60,14 +60,16 @@ export class SongFormComponent implements OnInit {
     });
   }
 
-  private getYoutubeID(url): string {
-    url = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
-    return (url[2] !== undefined) ? url[2].split(/[^0-9a-z_\-]/i)[0] : url[0];
+  private _getYoutubeID(url: string): string {
+    let link: string[];
+    link = url.split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+    return (link[2] !== undefined) ?
+      link[2].split(/[^0-9a-z_\-]/i)[0] : link[0];
   }
 
   public emitForm(): void {
     if (this.form.value.linkUrl) {
-      const ID = this.getYoutubeID(this.form.value.linkUrl);
+      const ID = this._getYoutubeID(this.form.value.linkUrl);
       this.form.value.linkUrl = `https://www.youtube.com/embed/${ID}`;
     }
     this.sendSong.emit(this.form);
