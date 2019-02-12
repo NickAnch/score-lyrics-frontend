@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { SongsComponent } from '@app/shared/components';
 import { RouterModule } from '@angular/router';
+import { AuthModalComponent } from '@app/shared/components';
 
 import {
   MatButtonModule,
@@ -21,6 +22,7 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatSnackBarModule,
+  MatDialogModule,
 } from '@angular/material';
 
 @NgModule({
@@ -30,6 +32,8 @@ import {
     RouterModule,
     MatListModule,
     MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
   ],
   exports: [
     TabsModule,
@@ -49,9 +53,11 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatDialogModule,
   ],
   declarations: [
     SongsComponent,
+    AuthModalComponent,
   ],
 })
 export class SharedModule { }

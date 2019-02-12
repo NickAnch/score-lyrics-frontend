@@ -10,6 +10,7 @@ import { SharedModule } from '@app/shared/shared.module';
 import { CoreModule } from '@app/core/core.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthModalComponent } from '@app/shared/components';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
   ],
   providers: [],
+  entryComponents: [
+    AuthModalComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
