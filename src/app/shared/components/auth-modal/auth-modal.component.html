@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>You're not logged in!</h1>
+<mat-dialog-content>
+  <p>Please, sign in.</p>
+  <p>If you're here for the first time, sign up.</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button
+          routerLink="/users/sign-in"
+          color="primary"
+          [mat-dialog-close]="true">Sign In</button>
+  <button mat-button
+          routerLink="/users/sign-up"
+          [mat-dialog-close]="true">Sign Up</button>
+</mat-dialog-actions>

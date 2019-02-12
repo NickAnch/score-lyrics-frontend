@@ -12,7 +12,8 @@ import {
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RatingService } from '@app/song/services';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
+import { AuthModalComponent } from '@app/shared/components';
 
 @Component({
   selector: 'app-song',
@@ -33,6 +34,7 @@ export class SongComponent implements OnInit, OnDestroy {
     private _route: ActivatedRoute,
     private _router: Router,
     private _snackBar: MatSnackBar,
+    public dialog: MatDialog,
   ) { }
 
   public ngOnInit() {
@@ -87,7 +89,10 @@ export class SongComponent implements OnInit, OnDestroy {
   }
 
   public putMark(key: string): void {
-    if (!this.user) { return; }
+    if (!this.user) {
+      this.dialog.open(AuthModalComponent);
+      return;
+    }
     const condition = key === 'likes';
     if (this.vote && this.vote.mark === condition) {
       this.rateSong(null);
