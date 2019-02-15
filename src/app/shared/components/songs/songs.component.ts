@@ -16,7 +16,7 @@ export class SongsComponent {
 
   constructor() { }
 
-  public trackByFn(index, song: ISong) {
+  public trackByFn(_, song: ISong) {
     return song.id;
   }
 }
