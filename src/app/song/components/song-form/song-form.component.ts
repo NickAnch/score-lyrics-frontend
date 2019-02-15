@@ -37,6 +37,10 @@ export class SongFormComponent implements OnInit {
   constructor() { }
 
   public ngOnInit() {
+    this._initForm();
+  }
+
+  private _initForm(): void {
     this.form = new FormGroup({
       singer: new FormControl(this.song.singer, [
         Validators.required,
@@ -74,5 +78,4 @@ export class SongFormComponent implements OnInit {
     }
     this.sendSong$.emit(this.form);
   }
-
 }

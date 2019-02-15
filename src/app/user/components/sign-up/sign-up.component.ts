@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -6,13 +6,14 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrentUserService } from '@app/core/services';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['../../styles/auth.scss']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
   public form: FormGroup;
 
   constructor(
@@ -21,6 +22,12 @@ export class SignUpComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
+    this._initForm();
+  }
+
+  public ngOnDestroy() { }
+
+  private _initForm(): void {
     this.form = new FormGroup({
       userName: new FormControl('', [
         Validators.required
@@ -42,6 +49,7 @@ export class SignUpComponent implements OnInit {
       this.form.value.userName,
       this.form.value.email,
       this.form.value.password
-    ).subscribe(() => this._route.navigate(['users/sign-in']));
+    ).pipe(untilDestroyed(this))
+    .subscribe(() => this._route.navigate(['users/sign-in']));
   }
 }
