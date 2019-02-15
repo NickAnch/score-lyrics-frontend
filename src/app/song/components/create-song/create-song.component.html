@@ -1,5 +1,6 @@
 <h3>
   Add a song
 </h3>
-<app-song-form [genres]="genres" (sendSong)="sendSong($event)">
+<app-song-form [genres]="genres$ | async"
+               (sendSong)="sendSong($event)">
 </app-song-form>

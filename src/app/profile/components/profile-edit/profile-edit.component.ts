@@ -22,7 +22,7 @@ import {MatSnackBar} from '@angular/material';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileEditComponent implements OnInit, OnDestroy {
-  @Input() profile: IUser;
+  @Input() public profile: IUser;
   public form: FormGroup;
 
   constructor(

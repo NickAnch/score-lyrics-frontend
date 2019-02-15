@@ -12,11 +12,11 @@ import { ISong } from '@lib/models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SongsComponent {
-  @Input() songs: ISong[];
+  @Input() public songs: ISong[];
 
   constructor() { }
 
-  trackByFn(index, song) {
+  public trackByFn(index, song: ISong) {
     return song.id;
   }
 }

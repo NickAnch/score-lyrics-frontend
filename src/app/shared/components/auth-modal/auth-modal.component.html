@@ -5,10 +5,10 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-raised-button
-          routerLink="/users/sign-in"
+          [routerLink]="['/', 'users', 'sign-in']"
           color="primary"
           [mat-dialog-close]="true">Sign In</button>
   <button mat-button
-          routerLink="/users/sign-up"
+          [routerLink]="['/', 'users', 'sign-up']"
           [mat-dialog-close]="true">Sign Up</button>
 </mat-dialog-actions>

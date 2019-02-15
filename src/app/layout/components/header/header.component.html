@@ -21,8 +21,12 @@
 
       <ng-template #authPanel>
         <div>
-          <button mat-button routerLink="/users/sign-in">Sign In</button>
-          <button mat-button routerLink="/users/sign-up">Sign Up</button>
+          <button mat-button [routerLink]="['/', 'users', 'sign-in']">
+            Sign In
+          </button>
+          <button mat-button [routerLink]="['/', 'users', 'sign-up']">
+            Sign Up
+          </button>
         </div>
       </ng-template>
     </nav>

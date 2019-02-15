@@ -26,7 +26,7 @@ export class HeaderComponent {
   public signOut(): void {
     this._currentUserService.signOut()
     .subscribe(() => {
-          this._router.navigate(['users/sign-in']);
-        });
+      this._router.navigate(['users/sign-in']);
+    });
   }
 }

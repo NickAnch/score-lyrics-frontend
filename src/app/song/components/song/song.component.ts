@@ -62,7 +62,7 @@ export class SongComponent implements OnInit, OnDestroy {
       );
   }
 
-  public rateSong(mark): void {
+  public rateSong(mark: boolean | null): void {
     let rating: string;
     switch (mark) {
       case true: {
@@ -79,6 +79,7 @@ export class SongComponent implements OnInit, OnDestroy {
       }
     }
     this._ratingService.rateSong(this.songId, mark)
+      .pipe(untilDestroyed(this))
       .subscribe(
         () => {
           this._snackBar.open(`You ${rating} the song and lyrics.`, 'Undo', {

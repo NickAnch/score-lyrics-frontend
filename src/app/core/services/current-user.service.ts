@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@env';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpResponse,
+} from '@angular/common/http';
 import {
   Observable,
-  Observer,
   of,
 } from 'rxjs';
 import { IUser } from '@lib/models';
@@ -43,11 +46,12 @@ export class CurrentUserService {
     return this._http
       .get<IUser>(this._profileUrl)
       .pipe(
-        tap(user => this._currentUser = user),
+        tap((user: IUser) => this._currentUser = user),
       );
   }
 
-  public signIn(email: string, password: string): Observable<boolean> {
+  public signIn(email: string, password: string)
+    : Observable<HttpResponse<IUser>> {
     const data = {
       user: {
         email: email,
@@ -55,22 +59,14 @@ export class CurrentUserService {
       }
     };
 
-    return Observable.create((observer: Observer<boolean>) => {
-      this._http
-        .post(`${this._usersUrl}/sign_in`, data, { observe: 'response' })
-        .subscribe(
-          (res) => {
-            CurrentUserService.setTokenByHeaders(res.headers);
-            this.getCurrentUser().subscribe(
-              () => {
-                observer.next(true);
-                observer.complete();
-              }
-            );
-          },
-          error => observer.error(error)
-        );
-    });
+    return this._http
+      .post<IUser>(`${this._usersUrl}/sign_in`, data, { observe: 'response' })
+      .pipe(
+        tap((res: HttpResponse<IUser>) => {
+          CurrentUserService.setTokenByHeaders(res.headers);
+          this._currentUser = res.body;
+        }),
+      );
   }
 
   public signUp(
@@ -88,33 +84,21 @@ export class CurrentUserService {
   }
 
   public editProfile(user: IUser): Observable<IUser> {
-    return Observable.create((observer: Observer<IUser>) => {
-      this._http
-        .put(this._profileUrl, { user: user })
-        .subscribe(
-          (curUser: IUser) => {
-            this._currentUser = curUser;
-            observer.next(curUser);
-            observer.complete();
-          },
-          error => observer.error(error)
-        );
-    });
+    return this._http
+      .put<IUser>(this._profileUrl, { user: user })
+      .pipe(
+        tap((curUser: IUser) => this._currentUser = curUser),
+      );
   }
 
   public signOut(): Observable<boolean> {
-    return Observable.create((observer: Observer<boolean>) => {
-      this._http
-        .delete(`${this._usersUrl}/sign_out`)
-        .subscribe(
-          () => {
+    return this._http
+      .delete<boolean>(`${this._usersUrl}/sign_out`)
+        .pipe(
+          tap(() => {
             this._currentUser = null;
             localStorage.removeItem('token');
-            observer.next(true);
-            observer.complete();
-          },
-          error => observer.error(error)
+          }),
         );
-    });
   }
 }
