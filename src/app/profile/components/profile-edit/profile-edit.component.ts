@@ -22,7 +22,7 @@ import {MatSnackBar} from '@angular/material';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileEditComponent implements OnInit, OnDestroy {
-  @Input() profile: IUser;
+  @Input() public profile: IUser;
   public form: FormGroup;
 
   constructor(
@@ -31,6 +31,12 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
   ) { }
 
   public ngOnInit() {
+    this._initForm();
+  }
+
+  public ngOnDestroy() { }
+
+  private _initForm(): void {
     this.form = new FormGroup({
       username: new FormControl(this.profile.username, [
         Validators.required,
@@ -40,9 +46,7 @@ export class ProfileEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  public ngOnDestroy() { }
-
-  public editProfile() {
+  public editProfile(): void {
     this._currentUserService.editProfile(this.form.value)
       .pipe(untilDestroyed(this))
       .subscribe(

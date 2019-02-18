@@ -18,17 +18,6 @@ export class RatingService {
         mark: mark
       }
     };
-
-    return Observable.create((observer: Observer<IVote>) => {
-      this._http
-        .post(`${this._songsUrl}/${id}/ratings`, data)
-        .subscribe(
-          (vote: IVote) => {
-            observer.next(vote);
-            observer.complete();
-          },
-          error => observer.error(error)
-        );
-    });
+    return this._http.post<IVote>(`${this._songsUrl}/${id}/ratings`, data);
   }
 }

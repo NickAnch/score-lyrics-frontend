@@ -7,7 +7,7 @@ import {
   EditSongComponent,
 } from '@app/song/components';
 import { SongsViewComponent } from './views';
-import { CurrentUserGuard } from '@app/core/services/current-user.guard';
+import { CurrentUserGuard } from '@app/core/services';
 
 const routes: Routes = [
   {

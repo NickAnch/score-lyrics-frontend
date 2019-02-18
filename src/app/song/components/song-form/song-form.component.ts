@@ -18,8 +18,8 @@ import { IGenre, ISong } from '@lib/models';
 export class SongFormComponent implements OnInit {
   public form: FormGroup;
 
-  @Input() genres: IGenre[];
-  @Input() song: ISong = {
+  @Input() public genres: IGenre[];
+  @Input() public song: ISong = {
     singer: '',
     name: '',
     linkUrl: '',
@@ -32,11 +32,15 @@ export class SongFormComponent implements OnInit {
     vote: null,
     genre_id: null,
   };
-  @Output() sendSong = new EventEmitter<FormGroup>();
+  @Output() public sendSong$ = new EventEmitter<FormGroup>();
 
   constructor() { }
 
   public ngOnInit() {
+    this._initForm();
+  }
+
+  private _initForm(): void {
     this.form = new FormGroup({
       singer: new FormControl(this.song.singer, [
         Validators.required,
@@ -72,7 +76,6 @@ export class SongFormComponent implements OnInit {
       const ID = this._getYoutubeID(this.form.value.linkUrl);
       this.form.value.linkUrl = `https://www.youtube.com/embed/${ID}`;
     }
-    this.sendSong.emit(this.form);
+    this.sendSong$.emit(this.form);
   }
-
 }

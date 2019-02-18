@@ -4,7 +4,7 @@ import { ProfileViewComponent } from './views';
 import {
   ProfileComponent,
 } from './components';
-import { CurrentUserGuard } from '@app/core/services/current-user.guard';
+import { CurrentUserGuard } from '@app/core/services';
 
 const routes: Routes = [
   {

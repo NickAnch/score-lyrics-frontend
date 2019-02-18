@@ -6,6 +6,7 @@ import { GenreService, ManageSongService } from '@app/song/services';
 import { FormGroup } from '@angular/forms';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { MatSnackBar } from '@angular/material';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-song',
@@ -14,7 +15,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class EditSongComponent implements OnInit, OnDestroy {
   public song: ISong;
-  public genres: IGenre[];
+  public genres$: Observable<IGenre[]> = this._genreService.getGenres();
   private _songId = +this._activatedRoute.snapshot.paramMap.get('id');
 
   constructor(
@@ -28,13 +29,9 @@ export class EditSongComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this._songService.getSong(this._songId)
+      .pipe(untilDestroyed(this))
       .subscribe((song: ISong) => {
         this.song = song;
-      });
-
-    this._genreService.getGenres()
-      .subscribe((genres: IGenre[]) => {
-        this.genres = genres;
       });
   }
 

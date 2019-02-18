@@ -16,18 +16,7 @@ export class UserService {
 
   public getUser(id: number): Observable<IUser> {
     const url = `${this._apiUrl}/${id}`;
-    return Observable.create((observer: Observer<IUser>) => {
-      this._http.get<IUser>(url).subscribe(
-        (response) => {
-          observer.next(response);
-          observer.complete();
-        },
-        (error) => {
-          observer.error(error);
-          observer.complete();
-        }
-      );
-    });
+    return this._http.get<IUser>(url);
   }
 
 }

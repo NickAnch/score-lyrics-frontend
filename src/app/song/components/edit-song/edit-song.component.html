@@ -2,7 +2,7 @@
   Edit a song
 </h3>
 <app-song-form *ngIf="song"
-               [genres]="genres"
+               [genres]="genres$ | async"
                [song]="song"
-               (sendSong)="updateSong($event)">
+               (sendSong$)="updateSong($event)">
 </app-song-form>

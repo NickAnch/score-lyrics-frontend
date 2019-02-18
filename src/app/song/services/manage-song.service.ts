@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ISong } from '@lib/models';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Observer } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '@env';
 
 @Injectable()
@@ -18,16 +18,6 @@ export class ManageSongService {
 
   public updateSong(song: ISong, id: number): Observable<ISong> {
     const url = `${this._songsUrl}/${id}`;
-    return Observable.create((observer: Observer<ISong>) => {
-      this._http
-        .put<ISong>(url, song)
-        .subscribe(response => {
-            observer.next(response);
-            observer.complete();
-          },
-          error => observer.error(error)
-        );
-      }
-    );
+    return this._http.put<ISong>(url, song);
   }
 }
